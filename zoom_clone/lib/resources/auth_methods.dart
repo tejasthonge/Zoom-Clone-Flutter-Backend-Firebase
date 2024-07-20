@@ -43,7 +43,8 @@ class AuthMethods{
         }
         
         res = true;
-        showCustomSnankBar(context: context, massage: "Successfull!");
+
+
       }
       
 
