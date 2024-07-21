@@ -12,6 +12,8 @@ class AuthMethods{
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore =FirebaseFirestore.instance;
+  Stream<User?> get getUserChange=> _auth.authStateChanges();  //it returns the new value for the the login or logout this is used for persistence   the home page state when user are signed in 
+
 
 
  Future<bool> signInWithGoogle({required BuildContext context})async{
