@@ -5,6 +5,7 @@ import 'package:zoom_clone/resources/auth_methods.dart';
 
 import 'package:zoom_clone/screen/auth/login_screen.dart';
 import 'package:zoom_clone/screen/home_screen.dart';
+import 'package:zoom_clone/screen/video_call/video_call_screen.dart';
 import 'package:zoom_clone/utils/constants/colors.dart';
 
 
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
       routes: {
 
         '/login':(context) => const LoginScreen(),
-        '/home':(context) => const HomeScreen()
+        '/home':(context) => const HomeScreen(),
+        '/video-call':(context)=>const VideoCallScreen()
       },
       
       home:StreamBuilder( 

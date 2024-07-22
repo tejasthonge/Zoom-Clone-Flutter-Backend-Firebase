@@ -10,9 +10,10 @@ import 'package:zoom_clone/utils/utils.dart';
 
 class AuthMethods{
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore =FirebaseFirestore.instance;
-  Stream<User?> get getUserChange=> _auth.authStateChanges();  //it returns the new value for the the login or logout this is used for persistence   the home page state when user are signed in 
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore firestore =FirebaseFirestore.instance;
+  Stream<User?> get getUserChange=> auth.authStateChanges();  //it returns the new value for the the login or logout this is used for persistence   the home page state when user are signed in 
+  User get user => auth.currentUser!;
 
 
 
@@ -28,13 +29,13 @@ class AuthMethods{
         idToken: googleAuth?.idToken,
       );
 
-      UserCredential userCredential =await  _auth.signInWithCredential(credential);
+      UserCredential userCredential =await  auth.signInWithCredential(credential);
       User?  user = userCredential.user;
 
 
       if(user != null){
         if(userCredential.additionalUserInfo!.isNewUser){
-        await _firestore.collection("users").doc(user.uid).set(
+        await firestore.collection("users").doc(user.uid).set(
             {
               'username':user.displayName,
               'email':user.email,
